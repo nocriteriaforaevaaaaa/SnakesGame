@@ -160,7 +160,9 @@ function Board() {
 
       const ladder = ladders.find((ladder) => ladder.start === targetPosition);
       if (ladder) {
+        setSnakeBiteMessage('🌟Boosted! You climbed a ladder.')
         await animatePathMove(ladder.path, setPosition);
+        setSnakeBiteMessage(null);
         targetPosition = ladder.end;
       }
 
@@ -173,7 +175,7 @@ function Board() {
       }
 
       if (targetPosition === totalCells) {
-        setWinner(isPlayerOneTurn ? "Player 1 (🟢)" : "Player 2 (🔵)");
+        setWinner(isPlayerOneTurn ? "Player 1 (🔴)" : "Player 2 (🔵)");
         setIsMoving(false);
         return;
       }
